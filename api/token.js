@@ -21,8 +21,6 @@ router.post("/", async (req, res) => {
     process.env.AUTH_SECRET_KEY_REFRESH
   );
 
-  console.log("is Token Valid :", isTokenValid);
-
   if (!isTokenValid) {
     return res.status(400).json({ error: `Refresh Token is incorrect!` });
   }
