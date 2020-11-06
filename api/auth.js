@@ -37,7 +37,12 @@ router.post("/", async (req, res) => {
     { expiresIn: "5m" }
   );
 
-  res.json({ userId: user.id, token: token, tokenExpiration: "5m" });
+  res.json({
+    userId: user.id,
+    userEmail: email,
+    token: token,
+    tokenExpiration: "5m",
+  });
 });
 
 module.exports = router;
