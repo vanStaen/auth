@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 
 // Endpoint routes handlers:
 app.use("/auth", require("./api/auth"));
+app.use("/token", require("./api/token"));
 
 // Connect to Mongo db
 mongoose.connect(
