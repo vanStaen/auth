@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
 const User = require("../models/User");
+const Token = require("../models/Token");
 const router = express.Router();
 
 // POST login
@@ -27,17 +28,33 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: `Password is incorrect!` });
   }
 
-  const token = await jsonwebtoken.sign(
+  const accessToken = await jsonwebtoken.sign(
     { userId: user.id, email: user.email },
     process.env.AUTH_SECRET_KEY,
-    { expiresIn: "5m" }
+    { expiresIn: "15m" }
   );
 
+  const refreshToken = await jsonwebtoken.sign(
+    { userId: user.id, email: user.email },
+    process.env.AUTH_SECRET_KEY_REFRESH,
+    { expiresIn: "7d" }
+  );
+
+  // Add refresh token to db
+  const newToken = new Token({
+    token: refreshToken,
+    userId: user.id,
+    email: user.email,
+  });
+  const savedToken = await newToken.save();
+
+  // response
   res.json({
     userId: user.id,
     userEmail: email,
-    token: token,
-    tokenExpiration: "5m",
+    token: accessToken,
+    refreshToken: refreshToken,
+    tokenExpiration: "15m",
   });
 });
 
