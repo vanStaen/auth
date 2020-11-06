@@ -1,6 +1,7 @@
 # auth
 
-Auth Server in Node/Express/Mongo.
+Auth Server in Node/Express/Mongo. </br>
+Deploy (production) : https://auth-cvs.herokuapp.com/(auth)
 
 ### Concept
 
