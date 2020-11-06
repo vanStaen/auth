@@ -1,11 +1,11 @@
 # auth
 
 Auth Server in Node/Express/Mongo. </br>
-Deploy (production) : https://auth-cvs.herokuapp.com/(auth)
+Deployed on:https://auth-cvs.herokuapp.com/(auth)
 
 ## Concept
 
-Following the concept of micro-service, and as it seems to be a best practive to separate the Auth server from the rest of the backend, here comes a Auth only server. </br>
+Following the concept of micro-service, and as it seems to be a best practice to separate the Auth server from the rest of the backend, here comes an Auth only server. </br>
 
 ## API Endpoint
 
