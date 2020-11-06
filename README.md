@@ -30,7 +30,7 @@ The endpoint delivers a token to anyone in possession of a valid refresh token.
 
 The endpoint deletes a refresh token from the database
 
-## Open question How to use this with several project?
+## Open question: How to use this with several project?
 
 - Have all user of all project in one user table?
 - Have the client sending a parameter pointing to a user_table?
