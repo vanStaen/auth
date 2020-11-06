@@ -54,7 +54,6 @@ router.post("/", async (req, res) => {
     userEmail: email,
     token: accessToken,
     refreshToken: refreshToken,
-    tokenExpiration: "15m",
   });
 });
 

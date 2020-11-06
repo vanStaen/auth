@@ -35,7 +35,6 @@ router.post("/", async (req, res) => {
 
   res.json({
     token: accessToken,
-    tokenExpiration: "15m",
   });
 });
 
