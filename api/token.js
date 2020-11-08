@@ -31,8 +31,15 @@ router.post("/", async (req, res) => {
     { expiresIn: "15m" }
   );
 
+  const refreshToken = await jsonwebtoken.sign(
+    { userId: isTokenValid.userId, email: isTokenValid.email },
+    process.env.AUTH_SECRET_KEY_REFRESH,
+    { expiresIn: "7d" }
+  );
+
   res.json({
     token: accessToken,
+    refreshToken: refreshToken,
   });
 });
 
