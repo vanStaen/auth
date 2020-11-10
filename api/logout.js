@@ -13,7 +13,7 @@ router.delete("/", async (req, res) => {
   const deleteToken = await Token.deleteOne({ token: refreshToken });
 
   if (deleteToken.deletedCount === 0) {
-    return res.status(401).json({ error: `Refresh token does not exist!` });
+    return res.status(401).json({ error: `Refresh token not found in db!` });
   }
 
   // Html resp code 204 return no content

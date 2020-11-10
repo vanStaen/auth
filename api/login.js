@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
   const savedToken = await newToken.save();
 
   // response
-  res.json({
+  res.status(200).json({
     userId: user.id,
     userEmail: email,
     token: accessToken,
