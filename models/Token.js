@@ -21,3 +21,6 @@ const refreshToken = mongoose.Schema({
 });
 
 module.exports = mongoose.model("Token", refreshToken);
+
+// Check this my dude: (Mongoose TTL index) 
+// https://stackoverflow.com/questions/26892660/mongoose-doesnt-create-ttl-indexes
