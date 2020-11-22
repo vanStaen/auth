@@ -7,6 +7,9 @@ require("dotenv/config");
 // Init Express
 const app = express();
 
+// Fix moongoose deprecation warning
+mongoose.set('useCreateIndex', true);
+
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
