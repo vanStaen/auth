@@ -9,7 +9,7 @@
     "dev": "nodemon index",
     "version": "heroku --version; git --version",
     "deploy": "heroku login; heroku git:remote -a auth-cvs; git push heroku master",
-    "log": "heroku logs --tail"
+    "log": "heroku logs --tail -a auth-cvs"
   },
   "repository": {
     "type": "git",
