@@ -1,44 +1,44 @@
 const bcrypt = require("bcryptjs");
 const express = require("express");
-const User = require("../models/User");
+const Passport = require("../models/Passport");
 const router = express.Router();
 
-/* GET User (for debugging only)
+// GET Passport (for debugging only)
 router.get("/", async (req, res) => {
     try {
-        const users = await User.find();
-        users.map((user) => {
+        const passports = await Passport.find();
+        passports.map((passport) => {
             return {
-                ...user._doc,
-                dateCreated: new Date(user._doc.dateCreated).toISOString(),
+                ...passport._doc,
+                dateCreated: new Date(passport._doc.dateCreated).toISOString(),
             };
         });
-        res.status(201).json({ users: users });
+        res.status(201).json({ passports: passports });
     } catch (err) {
         res.status(400).json({
             error: `${err}`,
         });
     }
-}) */
+})
 
-// POST Create New User
+// POST Create New Passport
 router.post("/", async (req, res) => {
-    User.findOne({ email: req.body.email })
-        .then((user) => {
-            if (user) {
+    Passport.findOne({ email: req.body.email })
+        .then((passport) => {
+            if (passport) {
                 res.status(400).json({ error: "There is already an account associated to this email." });
             }
             return bcrypt.hash(req.body.password, 12);
         })
         .then((hashedPassword) => {
-            const user = new User({
+            const passport = new Passport({
                 name: req.body.name,
                 email: req.body.email,
                 password: hashedPassword,
                 active: true,
             });
-            user.save();
-            res.status(201).json({ user: user });
+            passport.save();
+            res.status(201).json({ passport: passport });
         })
         .catch((err) => {
             res.status(400).json({
@@ -47,24 +47,24 @@ router.post("/", async (req, res) => {
         });
 })
 
-// PATCH update User
+// PATCH update Passport
 router.patch("/", async (req, res) => {
-    User.findOne({ email: req.body.email })
-        .then((user) => {
-            if (user) {
+    Passport.findOne({ email: req.body.email })
+        .then((passport) => {
+            if (passport) {
                 res.status(400).json({ error: "There is already an account associated to this email." });
             }
             return bcrypt.hash(req.body.password, 12);
         })
         .then((hashedPassword) => {
-            const user = new User({
+            const passport = new Passport({
                 name: req.body.name,
                 email: req.body.email,
                 password: hashedPassword,
                 active: true,
             });
-            user.save();
-            res.status(201).json({ user: user });
+            passport.save();
+            res.status(201).json({ passport: passport });
         })
         .catch((err) => {
             res.status(400).json({
