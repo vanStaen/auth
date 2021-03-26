@@ -158,6 +158,133 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:4000/passport",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjhiNGRlMmExNDQ4YTkyYzdiYTc0ZWIiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE2MDQ2Nzc1NzUsImV4cCI6MTYwNTI4MjM3NX0.BkNqaNeNi89QPyOcG7WplGCQ-4_xbv7lGpPti_tvFIY\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4000/passport/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"passport",
+						""
+					]
+				},
+				"description": "Local instance of Auth Server"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/passport",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n \"name\": \"test\", \n \"email\": \"test@gmail.com\",              \n \"password\": \"123\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4000/passport/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"passport",
+						""
+					]
+				},
+				"description": "Local instance of Auth Server"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/passport",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n \"name\": \"test\", \n \"email\": \"test@gmail.com\",             \n \"oldpassword\": \"12345\",            \n \"newpassword\": \"45678\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4000/passport/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"passport",
+						""
+					]
+				},
+				"description": "Local instance of Auth Server"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/passport",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n \"email\": \"test@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4000/passport/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"passport",
+						""
+					]
+				},
+				"description": "Local instance of Auth Server"
+			},
+			"response": []
 		}
 	]
 }
