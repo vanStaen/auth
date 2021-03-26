@@ -17,28 +17,28 @@ The clients should be self checking if a token has expired. If called with an ex
 
 A passport represent a user. Like a paper passport, it sums up the name, email and password of a user. It is not called a user to avoid confusion with the other "user" table and model from other services. 
 
+- GET : Commented out, only use to debug. Ignore this. 
+- POST : `{ name, email, password }` to create a new Passport. No token is returned.
+- PATCH :  `{ name, email, oldpassword, newpassword }` to update the user password.
+- DELETE : `{ email }` to delete the user account. 
+
 ### Login
 
-- inputs : `email` and `password`
-- outputs : `userId`, `userEmail`, `token`, `refreshToken`
+- inputs : `{ email, password }`
+- outputs : `{ userId, userEmail, token, refreshToken }`
 
 The token expiration is 15 minutes. The refresh token expires after 7 days. Every refresh token generated are getting saved in the database. See model "Token".
 
 ### Token
 
-- inputs : `refreshToken`
-- outputs : `token`
+- inputs : `{ refreshToken }`
+- outputs : `{ token }`
 
 The endpoint delivers a token to anyone in possession of a valid refresh token.
 
 ### Logout
 
-- inputs : `refreshToken`
+- inputs : `{ refreshToken }`
 - outputs : null
 
-The endpoint deletes a refresh token from the database
-
-## Open question: How to use this with several project?
-
-- Have all user of all project in one user table?
-- Have the client sending a parameter pointing to a user_table?
+The endpoint deletes a refresh token from the database.
