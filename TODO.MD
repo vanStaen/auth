@@ -2,10 +2,11 @@
 
 ## To-dos:
 
-- [ ] Move the create user Logic from Rewaer to Auth
-    - [x] ~~ GET User endpoint ~~
-    - [x] POST User endpoint
-    - [ ] PATCH User endpoint
-    - [ ] DELETE User endpoint
+- [ ] Delete User feature
 
 ## Completed ✓
+
+- [x] Login/logout/token from Rewaer
+- [x] Get user (as debugging feat.)
+- [x] Password update feature
+- [x] Create user feature
