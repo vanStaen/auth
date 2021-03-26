@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = mongoose.Schema({
+const PassportSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -17,14 +17,10 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  avatar: {
-    type: String,
-    required: false,
-  },
   active: {
     type: Boolean,
     required: true,
   },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Passport", PassportSchema);

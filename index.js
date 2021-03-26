@@ -26,9 +26,11 @@ app.use((req, res, next) => {
 });
 
 // Endpoint routes handlers:
+app.use("/passport", require("./api/passport"));
 app.use("/login", require("./api/login"));
 app.use("/token", require("./api/token"));
 app.use("/logout", require("./api/logout"));
+
 
 // Connect to Mongo db
 mongoose.connect(

@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
-const User = require("../models/User");
+const Passport = require("../models/Passport");
 const Token = require("../models/Token");
 const router = express.Router();
 
@@ -16,26 +16,26 @@ router.post("/", async (req, res) => {
 
   const email = req.body.email;
   const password = req.body.password;
-  const user = await User.findOne({ email: email });
+  const passport = await Passport.findOne({ email: email });
 
-  if (!user) {
-    return res.status(400).json({ error: `User does not exist!` });
+  if (!passport) {
+    return res.status(400).json({ error: `Passport does not exist!` });
   }
 
-  const isValid = await bcrypt.compare(password, user.password);
+  const isValid = await bcrypt.compare(password, passport.password);
 
   if (!isValid) {
     return res.status(400).json({ error: `Password is incorrect!` });
   }
 
   const accessToken = await jsonwebtoken.sign(
-    { userId: user.id, email: user.email },
+    { userId: passport.id, email: passport.email },
     process.env.AUTH_SECRET_KEY,
     { expiresIn: "15m" }
   );
 
   const refreshToken = await jsonwebtoken.sign(
-    { userId: user.id, email: user.email },
+    { userId: passport.id, email: passport.email },
     process.env.AUTH_SECRET_KEY_REFRESH,
     { expiresIn: "7d" }
   );
@@ -43,14 +43,14 @@ router.post("/", async (req, res) => {
   // Add refresh token to db
   const newToken = new Token({
     token: refreshToken,
-    userId: user.id,
-    email: user.email,
+    userId: passport.id,
+    email: passport.email,
   });
   const savedToken = await newToken.save();
 
   // response
   res.status(200).json({
-    userId: user.id,
+    userId: passport.id,
     userEmail: email,
     token: accessToken,
     refreshToken: refreshToken,

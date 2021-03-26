@@ -13,7 +13,11 @@ The clients should be self checking if a token has expired. If called with an ex
 
 ## API Endpoint
 
-### Auth
+### Passport
+
+A passport represent a user. Like a paper passport, it sums up the name, email and password of a user. It is not called a user to avoid confusion with the other "user" table and model from other services. 
+
+### Login
 
 - inputs : `email` and `password`
 - outputs : `userId`, `userEmail`, `token`, `refreshToken`
