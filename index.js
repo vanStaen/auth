@@ -29,7 +29,6 @@ app.use((req, res, next) => {
 app.use("/login", require("./api/login"));
 app.use("/token", require("./api/token"));
 app.use("/logout", require("./api/logout"));
-app.use("/user", require("./api/user"));
 
 // Connect to Mongo db
 mongoose.connect(
