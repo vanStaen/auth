@@ -3,7 +3,7 @@ const express = require("express");
 const Passport = require("../models/Passport");
 const router = express.Router();
 
-/* GET Passport (for debugging only)
+// GET Passport (for debugging only)
 router.get("/", async (req, res) => {
     try {
         const passports = await Passport.find();
@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
             error: `${err}`,
         });
     }
-})*/
+})
 
 // POST Create New Passport
 router.post("/", async (req, res) => {
