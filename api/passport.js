@@ -1,7 +1,8 @@
-const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose");
 const express = require("express");
-const Passport = require("../models/Passport");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+const Passport = require("../models/Passport");
 
 // GET Passport (for debugging only)
 router.get("/", async (req, res) => {
@@ -60,11 +61,10 @@ router.patch("/", async (req, res) => {
             }
             return passport._id;
         })
-        .then((userId) => {
-            const hashedNewPassword = bcrypt.hash(req.body.newpassword, 12);
-            const updateObject = { password: hashedNewPassword };
-            Passport.update({ _id: ObjectId(userId) }, { $set: updateObject });
-            res.status(201).json({ message: "Password successfully updated!" });
+        .then(async (userId) => {
+            const hashedNewPassword = await bcrypt.hash(req.body.newpassword, 12);
+            await Passport.update({ _id: mongoose.Types.ObjectId(userId) }, { password: hashedNewPassword });
+            res.status(201).json({ message: `Password successfully updated!` });
         })
         .catch((err) => {
             res.status(400).json({
