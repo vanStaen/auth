@@ -73,4 +73,16 @@ router.patch("/", async (req, res) => {
         });
 })
 
+// GET Passport (for debugging only)
+router.delete("/", async (req, res) => {
+    try {
+        await Passport.remove({ email: req.body.email }, { justOne: true });
+        res.status(201).json({ message: `Account for user ${req.body.email} has been successfully deleted!` });
+    } catch (err) {
+        res.status(400).json({
+            error: `${err}`,
+        });
+    }
+})
+
 module.exports = router;

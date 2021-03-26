@@ -2,7 +2,6 @@
 
 ## To-dos:
 
-- [ ] Delete User feature
 
 ## Completed ✓
 
@@ -10,3 +9,4 @@
 - [x] Get user (as debugging feat.)
 - [x] Password update feature
 - [x] Create user feature
+- [x] Delete User feature
